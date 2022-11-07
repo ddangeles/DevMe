@@ -5,6 +5,8 @@ import ProfileList from '../components/ProfileList';
 
 import { QUERY_PROFILES } from '../utils/queries';
 
+import ResponsiveDrawer from '../components/ResponsiveDrawer';
+
 const Home = () => {
   const { loading, data } = useQuery(QUERY_PROFILES);
   const profiles = data?.profiles || [];
@@ -12,6 +14,7 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
+        <ResponsiveDrawer />
         <div className="col-12 col-md-10 my-3">
           {loading ? (
             <div>Loading...</div>
