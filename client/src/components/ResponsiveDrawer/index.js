@@ -17,7 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import ProfileList from '../components/ProfileList';
+// import ProfileList from '../components/ProfileList';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -25,7 +25,10 @@ import Diversity3Icon from '@mui/icons-material/Diversity3';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import SchoolIcon from '@mui/icons-material/School';
 
+import Collabs from '../Collabs';
+import Dashboard from '../Dashboard';
 
+import './style.css'
 
 
 const drawerWidth = 240;
@@ -52,19 +55,19 @@ const [sections2] = useState([
 
 const [currentSection, setCurrentSection] = useState(sections[0])
 
-// const renderPage = () => {
-//   if (currentSection.name === "Dashboard") {
-//       return <About />
+const renderPage = () => {
+  if (currentSection.name === "Dashboard") {
+      return <Dashboard />
 //   } else if (currentSection.name === "Profile") {
 //       return <Portfolio />
-//   } else if (currentSection.name === "Collabs") {
-//       return <Contact />
+  } else if (currentSection.name === "Collabs") {
+      return <Collabs />
 //   } else if (currentSection.name === "Inbox") {
 //       return <Resume />
-//   } else {
-//       return <About />
-//   }
-// }
+  } else {
+      return <Dashboard />
+  }
+}
 
 
   
@@ -174,33 +177,7 @@ const [currentSection, setCurrentSection] = useState(sections[0])
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        {renderPage()}
       </Box>
     </Box>
   );
