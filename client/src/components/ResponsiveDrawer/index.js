@@ -27,6 +27,9 @@ import SchoolIcon from '@mui/icons-material/School';
 
 import Collabs from '../Collabs';
 import Dashboard from '../Dashboard';
+import Profile from '../Profile';
+import Inbox from '../Inbox';
+import FindStudent from '../FindStudent';
 
 import './style.css'
 
@@ -61,36 +64,39 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-const [sections] = useState([
-    { name: "Dashboard", icon: <DashboardIcon/>},
-    { name: "Profile", icon: <AccountCircleIcon/> },
-    { name: "Collabs", icon: <Diversity3Icon/> },
-    { name: "Inbox", icon: <InboxIcon/> }
-])
+  const [sections] = useState([
+    { name: "Dashboard", icon: <DashboardIcon /> },
+    { name: "Profile", icon: <AccountCircleIcon /> },
+    { name: "Collabs", icon: <Diversity3Icon /> },
+    { name: "Inbox", icon: <InboxIcon /> },
+    { name: "My Students", icon: <SchoolIcon /> },
+    { name: "Find Students", icon: <PersonSearchIcon /> }
+  ])
 
-const [sections2] = useState([
-  { name: "My Students", icon: <SchoolIcon/> },
-  { name: "Find Students", icon: <PersonSearchIcon/> }
-])
 
-const [currentSection, setCurrentSection] = useState(sections[0])
 
-const renderPage = () => {
-  if (currentSection.name === "Dashboard") {
+  const [currentSection, setCurrentSection] = useState(sections[0])
+
+  const renderPage = () => {
+    if (currentSection.name === "Dashboard") {
       return <Dashboard />
-//   } else if (currentSection.name === "Profile") {
-//       return <Portfolio />
-  } else if (currentSection.name === "Collabs") {
+    } else if (currentSection.name === "Profile") {
+      return <Profile />
+    } else if (currentSection.name === "Collabs") {
       return <Collabs />
-//   } else if (currentSection.name === "Inbox") {
-//       return <Resume />
-  } else {
+    } else if (currentSection.name === "Inbox") {
+      return <Inbox />
+    } else if (currentSection.name === "My Students") {
+      return <Inbox />
+    } else if (currentSection.name === "Find Students") {
+      return <FindStudent />
+    } else {
       return <Dashboard />
+    }
   }
-}
 
 
-  
+
   useEffect(() => {
     document.title = currentSection.name
   }, [currentSection])
@@ -100,23 +106,25 @@ const renderPage = () => {
       <Toolbar />
       <Divider />
       <List >
-      
-        {sections.map((section) =>  (
+
+        {sections.map((section) => (
           <ListItem key={section} disablePadding>
             <ListItemButton>
-              <ListItemIcon style={{ color: '#e6e9ec'}}>
-              {section.icon}
+              <ListItemIcon style={{ color: '#e6e9ec' }}>
+                {section.icon}
               </ListItemIcon>
-              <ListItemText className={currentSection.name === section.name && "active"} key={section.name}><span onClick={() => setCurrentSection(section) }> {section.name} </span>
-              </ListItemText>
+              <span onClick={() => setCurrentSection(section)}> {section.name}
+                <ListItemText className={currentSection.name === section.name && "active"} key={section.name}>
+                </ListItemText>
+              </span>
             </ListItemButton>
           </ListItem>
-                    
-                )
-                )}
+
+        )
+        )}
 
       </List>
-      <Divider />
+      {/* <Divider />
       <List>
       {sections2.map((section) =>  (
           <ListItem key={section} disablePadding>
@@ -130,8 +138,8 @@ const renderPage = () => {
           </ListItem>
                     
                 )
-                )}
-      </List>
+                )} */}
+      {/* </List> */}
     </div>
   );
 
@@ -139,16 +147,16 @@ const renderPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-        {/* <Toolbar>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            ml: { sm: `${drawerWidth}px` },
+          }}
+        >
+          {/* <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -160,49 +168,49 @@ const renderPage = () => {
           </IconButton>
           
         </Toolbar> */}
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          className='drawerBackground'
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
+        </AppBar>
+        <Box
+          component="nav"
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          aria-label="mailbox folders"
         >
-          {drawer}
-        </Drawer>
-        <Drawer 
-        className='drawerBackground'
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Drawer
+            className='drawerBackground'
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+          >
+            {drawer}
+          </Drawer>
+          <Drawer
+            className='drawerBackground'
+            variant="permanent"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         >
-          {drawer}
-        </Drawer>
+          <Toolbar />
+          {renderPage()}
+        </Box>
       </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        <Toolbar />
-        {renderPage()}
-      </Box>
-    </Box>
     </ThemeProvider>
   );
 }
