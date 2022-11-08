@@ -6,6 +6,8 @@ import { ADD_SKILL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 const SkillForm = ({ profileId }) => {
   const [skill, setSkill] = useState('');
 
@@ -27,7 +29,7 @@ const SkillForm = ({ profileId }) => {
 
   return (
     <div>
-      <h4>Endorse some more skills below.</h4>
+      <h4>Programming Languages:</h4>
 
       {Auth.loggedIn() ? (
         <form
@@ -36,7 +38,7 @@ const SkillForm = ({ profileId }) => {
         >
           <div className="col-12 col-lg-9">
             <input
-              placeholder="Endorse some skills..."
+              placeholder="Enter languages here..."
               value={skill}
               className="form-input w-100"
               onChange={(event) => setSkill(event.target.value)}
@@ -45,7 +47,7 @@ const SkillForm = ({ profileId }) => {
 
           <div className="col-12 col-lg-3">
             <button className="btn btn-info btn-block py-3" type="submit">
-              Endorse Skill
+              <AddCircleIcon/>
             </button>
           </div>
           {error && (
