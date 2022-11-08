@@ -19,6 +19,10 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  membershipType: {
+    type: String,
+    required: true
+  },
   skills: [
     {
       type: String,
