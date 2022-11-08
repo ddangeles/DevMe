@@ -30,6 +30,26 @@ import Dashboard from '../Dashboard';
 
 import './style.css'
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#052541",
+    },
+    secondary: {
+      main: "#e6e9ec",
+    },
+    background: {
+      default: '#052541',
+      paper: '#052541',
+    },
+    text: {
+      primary: '#e6e9ec',
+    }
+  },
+});
+
+
 
 const drawerWidth = 240;
 
@@ -79,12 +99,12 @@ const renderPage = () => {
     <div>
       <Toolbar />
       <Divider />
-      <List>
+      <List >
       
         {sections.map((section) =>  (
           <ListItem key={section} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon style={{ color: '#e6e9ec'}}>
               {section.icon}
               </ListItemIcon>
               <ListItemText className={currentSection.name === section.name && "active"} key={section.name}><span onClick={() => setCurrentSection(section) }> {section.name} </span>
@@ -101,7 +121,7 @@ const renderPage = () => {
       {sections2.map((section) =>  (
           <ListItem key={section} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon style={{ color: '#e6e9ec'}}>
               {section.icon}
               </ListItemIcon>
               <ListItemText className={currentSection.name === section.name && "active"} key={section.name}><span onClick={() => setCurrentSection(section) }> {section.name} </span>
@@ -118,6 +138,7 @@ const renderPage = () => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
@@ -147,6 +168,7 @@ const renderPage = () => {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
+          className='drawerBackground'
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -161,7 +183,8 @@ const renderPage = () => {
         >
           {drawer}
         </Drawer>
-        <Drawer
+        <Drawer 
+        className='drawerBackground'
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
@@ -180,6 +203,7 @@ const renderPage = () => {
         {renderPage()}
       </Box>
     </Box>
+    </ThemeProvider>
   );
 }
 
