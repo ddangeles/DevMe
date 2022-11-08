@@ -6,13 +6,20 @@ import { ADD_PROFILE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
 const Signup = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     password: '',
+    membershipType: '',
   });
   const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -23,6 +30,7 @@ const Signup = () => {
       [name]: value,
     });
   };
+
 
   // submit form
   const handleFormSubmit = async (event) => {
@@ -77,6 +85,20 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <Box sx={{ minWidth: 200 }}>
+                <InputLabel id="membership-type">Membership Type</InputLabel>
+                <Select
+                  labelId="membership-type"
+                  id="membership-type"
+                  name="membershipType"
+                  value={formState.membershipType}
+                  label="membershipType"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"Mentor"}>Mentor</MenuItem>
+                  <MenuItem value={"Mentee"}>Mentee</MenuItem>
+                </Select>
+                </Box>
                 <button
                   className="btn btn-block btn-info"
                   style={{ cursor: 'pointer' }}
