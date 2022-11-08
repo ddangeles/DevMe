@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     membershipType: String
+    connections: [Profile]!
     skills: [String]!
   }
 

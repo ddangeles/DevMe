@@ -23,6 +23,10 @@ const profileSchema = new Schema({
     type: String,
     required: true
   },
+  connections: [{
+    type: Schema.Types.ObjectId,
+    ref: "Profile"
+  }],
   skills: [
     {
       type: String,
