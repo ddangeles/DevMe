@@ -1,123 +1,53 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
-
-import Auth from '../utils/auth';
-
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import MenteeSignup from '../components/MenteeSignup';
+import MentorSignup from "../components/MentorSignup";
 
 const Signup = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    password: '',
-    membershipType: '',
-  });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [isShown, setIsShown] = useState(false)
+  const handleClick = event => {
+    event.preventDefault()
+    setIsShown(current => !current);
+  }
 
+  const [isShown2, setIsShown2] = useState(false)
+  const handleClick2 = event => {
+    event.preventDefault()
+    setIsShown2(current => !current);
+  }
 
-  // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-
-  // submit form
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-
-    try {
-      const { data } = await addProfile({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.addProfile.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <Box sx={{ minWidth: 200 }}>
-                <InputLabel id="membership-type">Membership Type</InputLabel>
-                <Select
-                  labelId="membership-type"
-                  id="membership-type"
-                  name="membershipType"
-                  value={formState.membershipType}
-                  label="membershipType"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={"Mentor"}>Mentor</MenuItem>
-                  <MenuItem value={"Mentee"}>Mentee</MenuItem>
-                </Select>
-                </Box>
-                <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+    <div>
+      <main className="flex-row justify-center mb-4">
+        <div className="col-6 col-lg-5">
+          <div className="card">
+            <h4 className="card-header bg-dark text-light p-2 text-center"><button onClick={handleClick} id="button-mentor">Mentor</button></h4>
+            
           </div>
         </div>
-      </div>
-    </main>
+
+        <div className="col-6 col-lg-5">
+          <div className="card">
+            <h4 className="card-header bg-dark text-light p-2 text-center"><button onClick={handleClick2} id="button-mentee">Mentee</button></h4>
+           
+          </div>
+        </div>
+      </main>
+
+      <main className="flex-row justify-center mb-4">
+        <div className="col-12 col-lg-10">
+            {isShown && (
+              <MentorSignup />
+            )}
+
+            {isShown2 && (
+              <MenteeSignup />
+            )}
+        </div>
+      </main>
+    </div>
+
   );
 };
 
