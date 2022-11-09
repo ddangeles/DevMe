@@ -14,7 +14,7 @@ const resolvers = {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id });
+        return Profile.findOne({ _id: context.user._id }).populate("connections");
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -23,7 +23,7 @@ const resolvers = {
     },
     mentees: async ( parent, { membershipType }) => {
       return Profile.find({ membershipType: "Mentee"})
-    }
+    },
   },
 
   Mutation: {
@@ -84,6 +84,35 @@ const resolvers = {
           { new: true }
         );
       }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addConnection: async (parent, { profileId }, context) => {
+      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+      if (context.user) {
+        const addedProfile = await Profile.findOneAndUpdate (
+          { _id: profileId },
+          {
+            $addToSet: { connections: context.user._id },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+        await Profile.findOneAndUpdate (
+          { _id: context.user._id },
+          {
+            $addToSet: { connections: profileId },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        )
+        return addedProfile
+      }
+      // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError('You need to be logged in!');
     },
   },

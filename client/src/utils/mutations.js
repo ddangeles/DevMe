@@ -43,3 +43,12 @@ export const REMOVE_SKILL = gql`
     }
   }
 `;
+
+export const ADD_CONNECTION = gql`
+  mutation addConnection($profileId: ID!) {
+    addConnection(profileId: $profileId) {
+      _id
+      name
+    }
+  }
+`;

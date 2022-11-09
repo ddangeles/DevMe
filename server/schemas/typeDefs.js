@@ -32,6 +32,8 @@ const typeDefs = gql`
     addSkill(profileId: ID!, skill: String!): Profile
     removeProfile: Profile
     removeSkill(skill: String!): Profile
+
+    addConnection(profileId: ID!): Profile
   }
 `;
 

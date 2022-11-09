@@ -36,6 +36,7 @@ export const QUERY_ME = gql`
 export const QUERY_MENTORS = gql`
 query Mentors {
   mentors {
+    _id
     name
     membershipType
     email
@@ -46,6 +47,7 @@ query Mentors {
 export const QUERY_MENTEES = gql`
 query Mentors {
   mentees {
+    _id
     name
     membershipType
     email
