@@ -72,7 +72,7 @@ function Dashboard() {
             <Card sx={{ gridColumn: '1', gridRow: '1 / 4', bgcolor: 'text.primary' }}>
                 <CardContent color="text.primary">
                     <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-                        CSS, HTML, JS
+                    {`${profile.skills}`}
                     </Typography>
                     <Typography variant="h5" component="div" color="primary.main">
                         {`${profile.name}`} 
@@ -81,7 +81,7 @@ function Dashboard() {
                         Id:{`${profile._id}`}  
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Mentor
+                    {`${profile.membershipType}`} 
                     </Typography>
                 </CardContent>
                 <CardActions>

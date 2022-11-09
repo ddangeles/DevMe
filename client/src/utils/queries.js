@@ -13,7 +13,7 @@ export const QUERY_PROFILES = gql`
 
 export const QUERY_SINGLE_PROFILE = gql`
   query singleProfile($profileId: ID!) {
-    profile(membershipType: $membershipType) {
+    profile(profileId: $profileId) {
       _id
       name
       skills
@@ -28,8 +28,28 @@ export const QUERY_ME = gql`
       _id
       name
       skills
+      membershipType
     }
   }
 `;
 
+export const QUERY_MENTORS = gql`
+query Mentors {
+  mentors {
+    name
+    membershipType
+    email
+  }
+}
+`;
+
+export const QUERY_MENTEES = gql`
+query Mentors {
+  mentees {
+    name
+    membershipType
+    email
+  }
+}
+`;
 

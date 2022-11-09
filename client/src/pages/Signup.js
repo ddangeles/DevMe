@@ -8,12 +8,14 @@ const Signup = () => {
   const handleClick = event => {
     event.preventDefault()
     setIsShown(current => !current);
+    setIsShown2(false)
   }
 
   const [isShown2, setIsShown2] = useState(false)
   const handleClick2 = event => {
     event.preventDefault()
     setIsShown2(current => !current);
+    setIsShown(false)
   }
 
 
@@ -38,7 +40,7 @@ const Signup = () => {
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
             {isShown && (
-              <MentorSignup />
+              <MentorSignup />  
             )}
 
             {isShown2 && (

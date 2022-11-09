@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './pages/Main';
+import SingleProfile from './pages/SingleProfile'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -64,7 +65,7 @@ function App() {
               />
               <Route 
                 path="/profiles/:profileId"
-                element={<Main />}
+                element={<SingleProfile />}
               />
             </Routes>
           </div>

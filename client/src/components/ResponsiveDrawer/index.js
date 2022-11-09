@@ -1,5 +1,10 @@
 // from material ui
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import Auth from '../../utils/auth';
+
+
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -23,13 +28,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import SchoolIcon from '@mui/icons-material/School';
+import DataObjectIcon from '@mui/icons-material/DataObject';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import Collabs from '../Collabs';
 import Dashboard from '../Dashboard';
 import Profile from '../Profile';
 import Inbox from '../Inbox';
 import FindStudent from '../FindStudent';
+
 
 import './style.css'
 
@@ -57,6 +64,10 @@ const theme = createTheme({
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -69,8 +80,8 @@ function ResponsiveDrawer(props) {
     { name: "Profile", icon: <AccountCircleIcon /> },
     { name: "Collabs", icon: <Diversity3Icon /> },
     { name: "Inbox", icon: <InboxIcon /> },
-    { name: "My Students", icon: <SchoolIcon /> },
-    { name: "Find Students", icon: <PersonSearchIcon /> }
+    { name: "My Developers", icon: <DataObjectIcon /> },
+    { name: "Find Developers", icon: <PersonSearchIcon /> }
   ])
 
 
@@ -86,9 +97,9 @@ function ResponsiveDrawer(props) {
       return <Collabs />
     } else if (currentSection.name === "Inbox") {
       return <Inbox />
-    } else if (currentSection.name === "My Students") {
+    } else if (currentSection.name === "My Developers") {
       return <Inbox />
-    } else if (currentSection.name === "Find Students") {
+    } else if (currentSection.name === "Find Developers") {
       return <FindStudent />
     } else {
       return <Dashboard />
@@ -124,6 +135,25 @@ function ResponsiveDrawer(props) {
         )}
 
       </List>
+      <Divider />
+      <div>
+          {Auth.loggedIn() ? (
+            <>
+            <ListItemButton>
+              <ListItemIcon style={{ color: '#e6e9ec' }}>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText onClick={logout}>
+                Logout
+              </ListItemText>
+              </ListItemButton>
+            </>
+          ) : (
+            <>
+            </>
+          )}
+        </div>
+
       {/* <Divider />
       <List>
       {sections2.map((section) =>  (
