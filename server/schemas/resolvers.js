@@ -18,6 +18,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    mentors: async ( parent, { membershipType }) => {
+      return Profile.find({ membershipType: "Mentor" })
+    },
+    mentees: async ( parent, { membershipType }) => {
+      return Profile.find({ membershipType: "Mentee"})
+    }
   },
 
   Mutation: {
