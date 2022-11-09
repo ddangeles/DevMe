@@ -15,7 +15,7 @@ const Home = () => {
     <main>
       <div className="flex-row justify-center">
         <ResponsiveDrawer />
-        <div className="col-12 col-md-10 my-3">
+        {/* <div className="col-12 col-md-10 my-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
@@ -24,7 +24,7 @@ const Home = () => {
               title="Here's the current roster of friends..."
             />
           )}
-        </div>
+        </div> */}
       </div>
     </main>
   );
