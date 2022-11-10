@@ -115,6 +115,17 @@ const resolvers = {
       // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    editProfile: async (parent, args, context ) => {
+      return Profile.findOneAndUpdate (
+        {_id: context.user._id },
+        args,
+        {
+          new: true,
+          runValidators: true,
+        }
+      )
+    }
   },
 };
 

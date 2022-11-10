@@ -33,6 +33,14 @@ const profileSchema = new Schema({
       trim: true,
     },
   ],
+  yearsExperience: {
+    type: Number,
+    required: false,
+  },
+  education: {
+    type: String,
+    required: false,
+  },
 });
 
 // set up pre-save middleware to create password

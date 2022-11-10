@@ -36,6 +36,7 @@ import Dashboard from '../Dashboard';
 import Profile from '../Profile';
 import Inbox from '../Inbox';
 import FindStudent from '../FindStudent';
+import MyDevelopers from '../MyDevelopers';
 
 
 import './style.css'
@@ -98,7 +99,7 @@ function ResponsiveDrawer(props) {
     } else if (currentSection.name === "Inbox") {
       return <Inbox />
     } else if (currentSection.name === "My Developers") {
-      return <Inbox />
+      return <MyDevelopers />
     } else if (currentSection.name === "Find Developers") {
       return <FindStudent />
     } else {

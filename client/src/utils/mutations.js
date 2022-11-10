@@ -52,3 +52,13 @@ export const ADD_CONNECTION = gql`
     }
   }
 `;
+
+export const EDIT_PROFILE = gql`
+  mutation editProfile($profileId: ID!, $name: String, $yearsExperience: Int, $education: String) {
+  editProfile(profileId: $profileId, name: $name, yearsExperience: $yearsExperience, education: $education) {
+    education
+    name
+    yearsExperience
+  }
+}
+`;
