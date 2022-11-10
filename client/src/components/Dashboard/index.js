@@ -58,7 +58,9 @@ function Dashboard() {
     }
 
     return (
+
         <Box
+
             sx={{
                 display: 'grid',
                 gridAutoFlow: 'row',
@@ -69,19 +71,20 @@ function Dashboard() {
                 maxWidth: '100%'
             }}
         >
+            <h2>Welcome, {`${profile.name}!`} </h2>
             <Card sx={{ gridColumn: '1', gridRow: '1 / 4', bgcolor: 'text.primary' }}>
                 <CardContent color="text.primary">
                     <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-                    {`${profile.skills}`}
+                        {`${profile.skills}`}
                     </Typography>
                     <Typography variant="h5" component="div" color="primary.main">
-                        {`${profile.name}`} 
+                        {`${profile.name}`}
                     </Typography>
                     <Typography sx={{ mb: 1.5, fontSize: 9 }} color="text.secondary">
-                        Id:{`${profile._id}`}  
+                        Id:{`${profile._id}`}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                    {`${profile.membershipType}`} 
+                        {`${profile.membershipType}`}
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -131,6 +134,7 @@ function Dashboard() {
 
 
         </Box>
+
 
     );
 }

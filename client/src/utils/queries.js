@@ -29,6 +29,14 @@ export const QUERY_ME = gql`
       name
       skills
       membershipType
+      email
+      education
+      yearsExperience
+      connections {
+        _id
+        email
+        name
+      }
     }
   }
 `;
