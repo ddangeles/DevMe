@@ -11,7 +11,7 @@ function Avatar({name}) {
 	return (
 
         
-		<div>
+		<span>
 			<img
 				id='preview'
 				src={
@@ -22,7 +22,7 @@ function Avatar({name}) {
 				alt='profile-pic'
 			/> 
             
-		</div>
+		</span>
 	);
 }
 
