@@ -12,9 +12,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 
-
+import Avatar from '../Avatar';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -71,7 +71,7 @@ function Dashboard() {
                 maxWidth: '100%'
             }}
         >
-            <h2>Welcome, {`${profile.name}!`} </h2>
+            <h1>Welcome, {`${profile.name}!`} </h1>
             <Card sx={{ gridColumn: '1', gridRow: '1 / 4', bgcolor: 'text.primary' }}>
                 <CardContent color="text.primary">
                     <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
@@ -109,21 +109,20 @@ function Dashboard() {
                         Connections
                     </Typography>
                     <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        {[0, 1, 2, 3].map((value) => {
-                            const labelId = `checkbox-list-secondary-label-${value}`;
+                    {profile.connections.map((connection) => {
+                            const labelId = `checkbox-list-secondary-label-${connection}`;
                             return (
                                 <ListItem
-                                    key={value}
+                                    key={connection}
                                     disablePadding
                                 >
                                     <ListItemButton>
                                         <ListItemAvatar>
                                             <Avatar
-                                                alt={`Avatar n°${value + 1}`}
-                                                src={`/static/images/avatar/${value + 1}.jpg`}
+                                                name={connection.name}
                                             />
                                         </ListItemAvatar>
-                                        <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                                        <ListItemText id={labelId} primary={` ${connection.name}`} />
                                     </ListItemButton>
                                 </ListItem>
                             );

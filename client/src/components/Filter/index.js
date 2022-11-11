@@ -12,23 +12,44 @@ const filterOptions = createFilterOptions({
 const theme2 = createTheme({
   palette: {
     accent1Color: {
-        main: "#e6e9ec",
+        main: "#1a1a1a",
     },
     primary: {
-      main: "#e6e9ec",
+      main: "#1a1a1a",
     },
     secondary: {
-      main: "#e6e9ec",
+      main: "#1a1a1a",
     },
     background: {
-      default: ' #e6e9ec', 
-      paper: ' #e6e9ec',
+      default: ' #1a1a1a', 
+      paper: ' #1a1a1a',
     },
     text: {
-      primary: '#052541',
+      primary: '#FFFFFF',
     }
   },
 });
+
+// const theme2 = createTheme({
+//   palette: {
+//     accent1Color: {
+//         main: "#e6e9ec",
+//     },
+//     primary: {
+//       main: "#e6e9ec",
+//     },
+//     secondary: {
+//       main: "#e6e9ec",
+//     },
+//     background: {
+//       default: ' #e6e9ec', 
+//       paper: ' #e6e9ec',
+//     },
+//     text: {
+//       primary: '#052541',
+//     }
+//   },
+// });
 
 const options = [ "Mentor", "Mentee" ]
 
