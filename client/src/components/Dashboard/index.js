@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css"
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -82,7 +83,7 @@ function Dashboard() {
                                         ))}
                                     </Stack>
                                     <Typography variant="h5" component="div" color="primary.main" py={2}>
-                                    <Avatar name={profile.name}/> {`${profile.name}`}
+                                        <Avatar name={profile.name} /> {`${profile.name}`}
                                     </Typography>
                                     <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
                                         Education: {`${profile.education}`}
@@ -128,13 +129,14 @@ function Dashboard() {
                                             key={connection}
                                             disablePadding
                                         >
-                                            <ListItemButton>
+                                            <ListItemButton to={`/profiles/${connection._id}`}>
                                                 <ListItemAvatar>
                                                     <Avatar
                                                         name={connection.name}
                                                     />
                                                 </ListItemAvatar>
                                                 <ListItemText id={labelId} primary={` ${connection.name}`} />
+                                                
                                             </ListItemButton>
                                         </ListItem>
                                     );
