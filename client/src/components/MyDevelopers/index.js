@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 
 import Avatar from '../Avatar';
 
+
 function MyDevelopers() {
     const { profileId } = useParams();
     const { loading, data } = useQuery(

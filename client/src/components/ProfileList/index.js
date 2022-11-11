@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import { useMutation } from '@apollo/client';
 import { ADD_CONNECTION } from '../../utils/mutations';
+
+
 
 
 const ProfileList = ({ profiles, title }) => {
@@ -13,6 +16,8 @@ const ProfileList = ({ profiles, title }) => {
   const handleConnection = async (event, profileId) => {
     event.preventDefault();
     console.log(profileId)
+    // remove later
+    alert('Success!')
 
     try {
       const data = await addConnection({
