@@ -2,75 +2,35 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { EDIT_PROFILE } from '../../utils/mutations';
+import { ADD_SKILL } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const SkillForm = ({ profileId }) => {
-  const [education, setEducation] = useState('');
-  const [name, setName] = useState('');
-  const [yearsExperience, setExperience] = useState('');
+  const [skill, setSkill] = useState('');
 
-  const [editProfile, { error }] = useMutation(EDIT_PROFILE);
+  const [addSkill, { error }] = useMutation(ADD_SKILL);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const data = await editProfile({
-        variables: { profileId, education },
+      const data = await addSkill({
+        variables: { profileId, skill },
       });
 
-      setEducation('');
-    } catch (err) {
-      console.error(err);
-    }
-
-    try {
-      const data = await editProfile({
-        variables: { profileId, name },
-      });
-
-      setName('');
-    } catch (err) {
-      console.error(err);
-    }
-
-    try {
-      const data = await editProfile({
-        variables: { profileId, yearsExperience }
-      });
-
-      setExperience('');
+      setSkill('');
     } catch (err) {
       console.error(err);
     }
   };
 
-  // onst SkillForm = ({ profileId }) => {
-  //   const [skill, setSkill] = useState('');
-  
-  //   const [addSkill, { error }] = useMutation(ADD_SKILL);
-  
-  //   const handleFormSubmit = async (event) => {
-  //     event.preventDefault();
-  
-  //     try {
-  //       const data = await addSkill({
-  //         variables: { profileId, skill },
-  //       });
-  
-  //       setSkill('');
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
 
   return (
     <div>
-      <h4>Edit Profile:</h4>
+      <h4>Add skills:</h4>
 
       {Auth.loggedIn() ? (
         <form
@@ -79,28 +39,10 @@ const SkillForm = ({ profileId }) => {
         >
           <div className="col-12 col-lg-9">
             <input
-              placeholder="Education"
-              value={education}
+              placeholder="Set skills"
+              value={skill}
               className="form-input w-100"
-              onChange={(event) => setEducation(event.target.value)}
-            />
-          </div>
-
-          <div className="col-12 col-lg-9">
-            <input
-              placeholder="Name"
-              value={name}
-              className="form-input w-100"
-              onChange={(event) => setName(event.target.value)}
-            />
-          </div>
-
-          <div className="col-12 col-lg-9">
-            <input
-              placeholder="Years"
-              value={yearsExperience}
-              className="form-input w-100"
-              onChange={(event) => setExperience(event.target.value)}
+              onChange={(event) => setSkill(event.target.value)}
             />
           </div>
           
