@@ -1,130 +1,154 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
 
-// import { EDIT_PROFILE } from '../../utils/mutations';
+import { EDIT_PROFILE } from '../../utils/mutations';
+import { QUERY_ME } from '../../utils/queries';
 
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 
-// import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-// const UpdateProfile = ({ profileId }) => {
-//     const [education, setEducation] = useState('');
-//     const [name, setName] = useState('');
-//     const [yearsExperience, setExperience] = useState('');
-//     const [skill, setSkill] = useState('');
+const UpdateProfile = ({ profileId, setIsShown}) => {
+    
+    const [name, setName] = useState('');
+    const [educationState, setEducation] = useState('');
+    const [yearsExperience, setExperience] = useState('');
+    const [skill, setSkill] = useState('');
   
-//     const [editProfile, { error }] = useMutation(EDIT_PROFILE);
-  
-//     const handleFormSubmit = async (event) => {
-//       event.preventDefault();
-  
-//       try {
-//         const data = await editProfile({
-//           variables: { profileId, education },
-//         });
-  
-//         setEducation('');
-//       } catch (err) {
-//         console.error(err);
-//       }
-  
-//       try {
-//         const data = await editProfile({
-//           variables: { profileId, name },
-//         });
-  
-//         setName('');
-//       } catch (err) {
-//         console.error(err);
-//       }
-  
-//       try {
-//         const data = await editProfile({
-//           variables: { profileId, yearsExperience }
-//         });
-  
-//         setExperience('');
-//       } catch (err) {
-//         console.error(err);
-//       }
+    const { loading, data } = useQuery(
+        QUERY_ME,
+        {
+          variables: { profileId: profileId },
+        }
+      );
+    const profile = data?.me || data?.profile || {};
+    
+    const [editProfile, { error }] = useMutation(EDIT_PROFILE);
 
-//       try {
-//         const data = await editProfile({
-//           variables: { profileId, skill },
-//         });
+    useEffect(()=> {
+        setEducation(profile.education)
+        setExperience(profile.yearsExperience)
+        setName(profile.name)
+    }, [loading, data])
+
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+     
+
+      try {
+        const data = await editProfile({
+          variables: { profileId: profileId, education: educationState },
+        });
   
-//         setSkill('');
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     };
+        setEducation('');
+      } catch (err) {
+        console.error(err);
+      }
   
-//     return (
-//       <div>
-//         <h4>Edit Profile:</h4>
+      try {
+        const data = await editProfile({
+          variables: { profileId, name },
+        });
   
-//         {Auth.loggedIn() ? (
-//           <form
-//             className="flex-row justify-center justify-space-between-md align-center"
-//             onSubmit={handleFormSubmit}
-//           >
-//             <div className="col-12 col-lg-9">
-//               <input
-//                 placeholder="Education"
-//                 value={education}
-//                 className="form-input w-100"
-//                 onChange={(event) => setEducation(event.target.value)}
-//               />
-//             </div>
+        setName('');
+      } catch (err) {
+        console.error(err);
+      }
   
-//             <div className="col-12 col-lg-9">
-//               <input
-//                 placeholder="Name"
-//                 value={name}
-//                 className="form-input w-100"
-//                 onChange={(event) => setName(event.target.value)}
-//               />
-//             </div>
+      try {
+        const data = await editProfile({
+          variables: { profileId, yearsExperience: parseInt(yearsExperience) }
+        });
   
-//             <div className="col-12 col-lg-9">
-//               <input
-//                 placeholder="Years"
-//                 value={yearsExperience}
-//                 className="form-input w-100"
-//                 onChange={(event) => setExperience(event.target.value)}
-//               />
-//             </div>
+        setExperience('');
+      } catch (err) {
+        console.error(err);
+      }
+
+      try {
+        const data = await editProfile({
+          variables: { profileId, skill },
+        });
+  
+        setSkill('');
+      } catch (err) {
+        console.error(err);
+      }
+      setIsShown(false)
+    };
+    console.log(profile.education)
+    console.log(educationState)
+    return (
+      <div>
+        <h4>Edit Profile:</h4>
+  
+        {Auth.loggedIn() ? (
+          <form
+            className="flex-row justify-center justify-space-between-md align-center"
+            onSubmit={handleFormSubmit}
+          >
+
+            <div className="col-12 col-lg-9">
+              <input
+                placeholder="Name"
+                defaultValue={name}
+                // value={name}
+                className="form-input w-100"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
+
+            <div className="col-12 col-lg-9">
+              <input
+                placeholder="Education" 
+                defaultValue={educationState}
+                // value={educationState}
+                className="form-input w-100"
+                onChange={(event) => setEducation(event.target.value)}
+              />
+            </div>
+
+  
+            <div className="col-12 col-lg-9">
+              <input
+                placeholder="Years"
+                defaultValue={yearsExperience}
+                // value={yearsExperience}
+                className="form-input w-100"
+                onChange={(event) => setExperience(event.target.value)}
+              />
+            </div>
             
-//             {/* <div className="col-12 col-lg-9">
-//               <input
-//                 placeholder="Skills"
-//                 value={skill}
-//                 className="form-input w-100"
-//                 onChange={(event) => setSkill(event.target.value)}
-//               />
-//             </div> */}
+            {/* <div className="col-12 col-lg-9">
+              <input
+                placeholder="Skills"
+                value={skill}
+                className="form-input w-100"
+                onChange={(event) => setSkill(event.target.value)}
+              />
+            </div> */}
 
-//             <div className="col-12 col-lg-3">
-//               <button className="btn btn-info btn-block py-3" type="submit">
-//                 SAVE
-//               </button>
-//             </div>
-//             {error && (
-//               <div className="col-12 my-3 bg-danger text-white p-3">
-//                 {error.message}
-//               </div>
-//             )}
-//           </form>
-//         ) : (
-//           <p>
-//             You need to be logged in to endorse skills. Please{' '}
-//             <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-//           </p>
-//         )}
-//       </div>
-//     );
-//   };
+            <div className="col-12 col-lg-3">
+              <button className="btn btn-info btn-block py-3" type="submit">
+                SAVE
+              </button>
+            </div>
+            {error && (
+              <div className="col-12 my-3 bg-danger text-white p-3">
+                {error.message}
+              </div>
+            )}
+          </form>
+        ) : (
+          <p>
+            You need to be logged in to endorse skills. Please{' '}
+            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          </p>
+        )}
+      </div>
+    );
+  };
   
-//   export default UpdateProfile;
+  export default UpdateProfile;
   
