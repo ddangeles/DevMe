@@ -23,6 +23,7 @@ import Auth from '../../utils/auth';
 import Avatar from '../Avatar';
 
 import EditProfile from '../EditProfile';
+import UpdateProfile from '../UpdateProfile';
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -49,11 +50,11 @@ const Profile = () => {
     
   }
 
-  const [isShown2, setIsShown2] = useState(false)
-  const handleSave = event => {
-    event.preventDefault()
-    setIsShown(false);
-  }
+  // const [isShown2, setIsShown2] = useState(false)
+  // const handleSave = event => {
+  //   event.preventDefault()
+  //   setIsShown(false);
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -93,7 +94,7 @@ const Profile = () => {
     <div>
 
       {!isShown ? 
-      <Card sx={{ bgcolor: 'text.primary' }}>
+      <Card sx={{ bgcolor: 'text.primary', width: '400px'}}>
         <CardContent color="primary.main">
           <CardHeader 
           avatar={
@@ -132,56 +133,54 @@ const Profile = () => {
       
         // <EditProfile/>
       
-        <Card sx={{ bgcolor: 'text.primary' }}>
-          <CardContent color="text.primary">
-            <Typography variant="h5" component="div" color="primary.main">
-              <Avatar
+        // <Card sx={{ bgcolor: 'text.primary' }}>
+        //   <CardContent color="text.primary">
+        //     <Typography variant="h5" component="div" color="primary.main">
+        //       <Avatar
 
-                name={profile.name} />
-              {`${profile.name}`}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {`${profile.membershipType}`}
-            </Typography>
-            <br/>
-            <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
-              Email: <TextField id="outlined-basic" label="update email" variant="filled" />
-            </Typography>
-            <br/>
+        //         name={profile.name} />
+        //       {`${profile.name}`}
+        //     </Typography>
+        //     <Typography variant="body2" color="text.secondary">
+        //       {`${profile.membershipType}`}
+        //     </Typography>
+        //     <br/>
+        //     <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
+        //       Email: <TextField id="outlined-basic" label="update email" variant="filled" />
+        //     </Typography>
+        //     <br/>
             
 
-            <Typography variant="body2" color="text.secondary">
-              Education: <TextField id="outlined-basic" label="update education" variant="filled" />
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Year's Experience: <TextField id="outlined-basic" label="update years experience" variant="filled" />
-            </Typography>
-            <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-              {`${profile.skills}`}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" onClick={handleSave}>SAVE</Button>
-          </CardActions>
+        //     <Typography variant="body2" color="text.secondary">
+        //       Education: <TextField id="outlined-basic" label="update education" variant="filled" />
+        //     </Typography>
+        //     <Typography variant="body2" color="text.secondary">
+        //       Year's Experience: <TextField id="outlined-basic" label="update years experience" variant="filled" />
+        //     </Typography>
+        //     <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+        //       {`${profile.skills}`}
+        //     </Typography>
+        //   </CardContent>
+        //   <CardActions>
+        //     <Button size="small" onClick={handleSave}>SAVE</Button>
+        //   </CardActions>
 
-        </Card>
-      }
+        // </Card>
+        <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+        <SkillForm profileId={profile._id} />
+        {/* update profile form vvvv */}
+        <UpdateProfile profileId={profile._id} setIsShown={setIsShown}/>
+      </div>
+      } 
 
       
 
-
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
-        {/* update profile form vvvv */}
-        {/* <UpdateProfile profileId={profile._id} /> */}
-      </div>
-
-      {profile.skills?.length > 0 && (
+      {/* {profile.skills?.length > 0 && (
         <SkillsList
           skills={profile.skills}
           isLoggedInUser={!profileId && true}
         />
-      )}
+      )} */}
 
     </div>
   );

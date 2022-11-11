@@ -41,6 +41,12 @@ const profileSchema = new Schema({
     type: String,
     required: false,
   },
+  collabLinks: [
+    {
+      type: String,
+      trim: true,
+    },
+  ],
 });
 
 // set up pre-save middleware to create password

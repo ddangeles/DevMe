@@ -11,6 +11,7 @@ const typeDefs = gql`
     skills: [String]!
     yearsExperience: Int
     education: String
+    collabLinks: [String]!
   }
 
   type Auth {
@@ -35,6 +36,8 @@ const typeDefs = gql`
     removeSkill(skill: String!): Profile
     addConnection(profileId: ID!): Profile
     editProfile(profileId: ID!, name: String, email: String, password: String, membershipType: String, yearsExperience: Int, education: String): Profile
+    addCollabLink(profileId: ID!, collabLink: String!): Profile
+    removeCollabLink(collabLink: String!): Profile
   }
 `;
 

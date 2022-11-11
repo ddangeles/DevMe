@@ -18,11 +18,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    mentors: async ( parent, { membershipType }) => {
+    mentors: async (parent, { membershipType }) => {
       return Profile.find({ membershipType: "Mentor" })
     },
-    mentees: async ( parent, { membershipType }) => {
-      return Profile.find({ membershipType: "Mentee"})
+    mentees: async (parent, { membershipType }) => {
+      return Profile.find({ membershipType: "Mentee" })
     },
   },
 
@@ -90,7 +90,7 @@ const resolvers = {
     addConnection: async (parent, { profileId }, context) => {
       // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
       if (context.user) {
-        const addedProfile = await Profile.findOneAndUpdate (
+        const addedProfile = await Profile.findOneAndUpdate(
           { _id: profileId },
           {
             $addToSet: { connections: context.user._id },
@@ -100,7 +100,7 @@ const resolvers = {
             runValidators: true,
           }
         );
-        await Profile.findOneAndUpdate (
+        await Profile.findOneAndUpdate(
           { _id: context.user._id },
           {
             $addToSet: { connections: profileId },
@@ -116,17 +116,43 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    editProfile: async (parent, args, context ) => {
-      return Profile.findOneAndUpdate (
-        {_id: context.user._id },
+    editProfile: async (parent, args, context) => {
+      return Profile.findOneAndUpdate(
+        { _id: context.user._id },
         args,
         {
           new: true,
           runValidators: true,
         }
       )
-    }
-  },
-};
+    },
 
-module.exports = resolvers;
+    addCollabLink: async (parent, { profileId, collabLink }, context) => {
+      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+      if (context.user) {
+        return Profile.findOneAndUpdate(
+          { _id: profileId },
+          {
+            $addToSet: { collabLinks: collabLink },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+    },
+    removeCollabLink: async (parent, { collabLink }, context) => {
+      if (context.user) {
+        return Profile.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { collabLinks: collabLink } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+  }
+  };
+
+  module.exports = resolvers;
