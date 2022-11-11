@@ -54,12 +54,13 @@ export const ADD_CONNECTION = gql`
 `;
 
 export const EDIT_PROFILE = gql`
-  mutation editProfile($profileId: ID!, $name: String, $yearsExperience: Int, $education: String) {
-  editProfile(profileId: $profileId, name: $name, yearsExperience: $yearsExperience, education: $education) {
+  mutation editProfile($profileId: ID!, $name: String, $yearsExperience: Int, $education: String, $skill: String!) {
+  editProfile(profileId: $profileId, name: $name, yearsExperience: $yearsExperience, education: $education, skill: $skill) {
     _id
     education
     name
     yearsExperience
+    skills
   }
 }
 `;
