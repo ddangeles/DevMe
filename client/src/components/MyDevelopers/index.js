@@ -49,7 +49,7 @@ function MyDevelopers() {
         <div >
             <div className="text-center"><h4>Your developers</h4></div>
 
-            <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#e6e9ec', color: '#052541' }}>
+            <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#e6e9ec', color: '#052541', borderRadius:'5px' }}>
                 {profile.connections.map((connection) => (
                     <><ListItem alignItems="flex-start">
                         <ListItemAvatar
