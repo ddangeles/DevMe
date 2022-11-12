@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./style.css"
 
 
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -41,7 +42,7 @@ const ProfileList = ({ profiles, title }) => {
           profiles.map((profile) => (
             <div key={profile._id} className="col-12 col-xl-6">
               <div className="card mb-3">
-                <h4 className="card-header bg-dark text-light p-2 m-0">
+                <h4 className="card-header bg-info text-light p-2 m-0">
                   {profile.name} <br />
                   <span className="text-white" style={{ fontSize: '1rem' }}>
                     Enrolled As: {profile.membershipType}

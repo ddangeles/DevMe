@@ -7,3 +7,28 @@
     border-radius: 50px;
 }
 
+.cardOne {
+    border-radius: 15px !important;
+    display: flex !important;
+    justify-content: center;
+}
+
+.cardTwo {
+    border-radius: 15px !important;
+}
+
+.cardThree {
+    border-radius: 15px !important;
+}
+
+.cardBoxOne {
+    width: 20rem !important;
+    margin-bottom: 1.8rem !important;
+    margin-top: .5rem !important;
+    border-radius: 15px !important;
+    background-color: #052541 !important;
+}
+
+.connectBtn:hover {
+    background-color: #314353 !important;
+}

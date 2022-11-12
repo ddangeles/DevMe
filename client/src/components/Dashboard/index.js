@@ -75,14 +75,14 @@ function Dashboard() {
                 <Grid>
                     <Grid container spacing={2} columns={12}>
                         <Grid item xs={5}>
-                            <Card item sx={{ bgcolor: 'text.primary' }}>
+                            <Card className='cardThree' item sx={{ bgcolor: 'text.primary' }}>
                                 <CardContent color="text.primary">
                                     <Stack spacing={2} direction="row">
                                         {profile.skills.map((skill) => (
                                             <span><Badge className='badge'>{`${skill}`}</Badge></span>
                                         ))}
                                     </Stack>
-                                    <Typography variant="h5" component="div" color="primary.main" py={2}>
+                                    <Typography variant="h3" component="div" color="primary.main" py={2}>
                                         <Avatar name={profile.name} /> {`${profile.name}`}
                                     </Typography>
                                     <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
@@ -102,7 +102,7 @@ function Dashboard() {
                         </Grid>
 
                         <Grid item xs={7}>
-                            <Card sx={{ bgcolor: 'text.primary' }}>
+                            <Card className='cardTwo' sx={{ bgcolor: 'text.primary' }}>
                                 <CardContent color="text.primary">
                                     <Typography variant="h5" component="div" color="primary.main">
                                         Collab Summary
@@ -116,12 +116,12 @@ function Dashboard() {
                     </Grid>
 
                     <br />
-                    <Card sx={{ bgcolor: 'text.primary' }}>
-                        <CardContent color="text.primary">
+                    <Card className='cardOne' sx={{ bgcolor: 'text.primary' }}>
+                        <CardContent class color="text.primary">
                             <Typography variant="h5" component="div" color="primary.main">
                                 Connections
                             </Typography>
-                            <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                            <List className='cardBoxOne' dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                                 {profile.connections.map((connection) => {
                                     const labelId = `checkbox-list-secondary-label-${connection}`;
                                     return (
@@ -129,7 +129,7 @@ function Dashboard() {
                                             key={connection}
                                             disablePadding
                                         >
-                                            <ListItemButton to={`/profiles/${connection._id}`}>
+                                            <ListItemButton className='connectBtn' to={`/profiles/${connection._id}`}>
                                                 <ListItemAvatar>
                                                     <Avatar
                                                         name={connection.name}
