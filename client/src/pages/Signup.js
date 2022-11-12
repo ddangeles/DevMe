@@ -24,14 +24,14 @@ const Signup = () => {
       <main className="flex-row justify-center mb-4">
         <div className="col-6 col-lg-5">
           <div className="card">
-            <h4 className="card-header bg-dark text-light p-2 text-center"><button onClick={handleClick} id="button-mentor">Mentor</button></h4>
+            <h4 className="card-header p-2 text-center"><button className="signupButton" onClick={handleClick} id="button-mentor">Mentor</button></h4>
             
           </div>
         </div>
 
         <div className="col-6 col-lg-5">
           <div className="card">
-            <h4 className="card-header bg-dark text-light p-2 text-center"><button onClick={handleClick2} id="button-mentee">Mentee</button></h4>
+            <h4 className="card-header p-2 text-center"><button className="signupButton" onClick={handleClick2} id="button-mentee">Mentee</button></h4>
            
           </div>
         </div>

@@ -25,7 +25,8 @@ function FindStudent() {
   return (
 
    
-    <div className="col-12 col-md-10 my-3"> {filter}
+    <div className="col-12 col-md-10 my-3 align-center justify-center"> 
+    {/* {filter} */}
       <Filter setFilter={setFilter}/>
       
       {loading ? (
