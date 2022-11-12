@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -18,9 +19,12 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import CardHeader from '@mui/material/CardHeader';
 
+
 import Avatar from '../components/Avatar';
 
 const SingleProfile = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { profileId } = useParams();
 
   // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -54,13 +58,16 @@ const SingleProfile = () => {
     );
   }
 
+
+
   return (
     <div>
 
-      <h2 className="card-header">
-        You are viewing {`${profile.name}'s profile!`}
-      </h2>
-
+      <Typography sx={{color: '#e6e9ec', background:'#052541', border:'0px', fontSize:'25px'}}>
+        You are viewing {`${profile.name}'s profile!`} 
+        <br/>
+      </Typography>
+      <br/>
 
       {/* <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <SkillForm profileId={profile._id} />
@@ -80,7 +87,7 @@ const SingleProfile = () => {
               <Avatar name={profile.name} />
             }
             title={<Typography sx={{ color: '#052541', fontSize: '25px', fontWeight: 'bold', mb: -'1', mt: -'1' }}>{profile.name}</Typography>}
-            subheader={<Typography sx={{ color: '#e6e9ec', fontSize: '15px', }}>{profile.membershipType}</Typography>}
+            subheader={<Typography sx={{ color: '#393D39', fontSize: '15px', }}>{profile.membershipType}</Typography>}
           />
           <Typography sx={{ mb: 1.5, fontSize: 15, ml: 3, }} color="text.secondary">
             Email: {`${profile.email}`}
@@ -93,6 +100,12 @@ const SingleProfile = () => {
           </Typography>
           <Typography sx={{ mb: 1.5, fontSize: 15, ml: 3, }} color="text.secondary" gutterBottom>
             Skills: {`${profile.skills} `}
+          </Typography>
+          <Typography>
+          {location.pathname !== '/' && (
+            <Button onClick={() => navigate(-1)}
+            sx={{color: '#052541'}}
+            >Back</Button>)}
           </Typography>
         </CardContent>
       </Card>
