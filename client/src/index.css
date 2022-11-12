@@ -1093,6 +1093,21 @@ a:hover {
   background-color: #31a9e1;
 }
 
+.devButton{
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #052541;
+  /* background-color: #052541; */
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
 .card {
   border: 1px solid #1a1a1a;
   margin-bottom: 1rem;

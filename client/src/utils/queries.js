@@ -18,6 +18,9 @@ export const QUERY_SINGLE_PROFILE = gql`
       name
       skills
       membershipType
+      email
+      education
+      yearsExperience
     }
   }
 `;

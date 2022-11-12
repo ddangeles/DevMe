@@ -14,6 +14,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Typography from '@mui/material/Typography';
 
+
+
 import Avatar from '../Avatar';
 
 
@@ -43,17 +45,19 @@ function MyDevelopers() {
         );
     };
 
-        return (
-        <div>
-            <div>{`${profile.name}'s developer connections:`}</div>
+    return (
+        <div >
+            <div className="text-center"><h4>Your developers</h4></div>
 
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#e6e9ec', color: '#052541' }}>
                 {profile.connections.map((connection) => (
                     <><ListItem alignItems="flex-start">
-                        <ListItemAvatar>
+                        <ListItemAvatar
+                        sx={{mr: '2px'}}>
                             <Avatar
                             
-                            name={connection.name}/>
+                            name={connection.name}
+                            />
 
                         </ListItemAvatar>
                         <ListItemText
@@ -64,13 +68,15 @@ function MyDevelopers() {
                                         sx={{ display: 'inline' }}
                                         component="span"
                                         variant="body2"
-                                        color="text.primary"
+                                        color="#696969"
                                     >
                                         {connection.email}
                                     </Typography>
+                                    <br/>
                                     <Link
-                                        className="btn btn-block btn-squared btn-light text-dark"
+                                        className="devButton"
                                         to={`/profiles/${connection._id}`}
+                                        
                                     >
                                         View Profile
                                     </Link>
@@ -87,11 +93,14 @@ function MyDevelopers() {
 
             </List>
 
+
+          
+
+
+
         </div>
     );
-
-
-
 }
 
 export default MyDevelopers;
+
