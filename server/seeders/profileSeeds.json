@@ -1,0 +1,84 @@
+[
+
+  {
+    "name": "Brian Kernighan",
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01",
+    "skills": ["AWK", "AMPL", "Unix"],
+    "membershipType": "Mentor",
+    "education": "Standford",
+    "yearsExperience": "10"
+  },
+  {
+    "name": "Max Kanat-Alexander",
+    "email": "mkanatalexander@techfriends.dev",
+    "password": "password02",
+    "skills": ["Java", "Perl", "Apache", "Python"],
+    "membershipType": "Mentee",
+    "education": "Ohio State",
+    "yearsExperience": "1"
+  },
+  {
+    "name": "Amiko Corrin",
+    "email": "amiko@techfriends.dev",
+    "password": "password03",
+    "skills": ["NodeJS", "MySQL", "MongoDB", "React", "CSS-in-JS"],
+    "membershipType": "Mentor",
+    "education": "UCSD",
+    "yearsExperience": "5"
+  },
+  {
+    "name": "Kent Beck",
+    "email": "kbeck@techfriends.dev",
+    "password": "password04",
+    "skills": [
+      "Test-Driven Development",
+      "Extreme Programming",
+      "Software Design Patterns",
+      "JUnit"
+    ],
+    "membershipType": "Mentee",
+    "education": "Bootcamp",
+    "yearsExperience": "0"
+  },
+  {
+    "name": "Edward V. Berard",
+    "email": "evberard@techfriends.dev",
+    "password": "password05",
+    "skills": ["Object-Oriented Design"],
+    "membershipType": "Mentor",
+    "education": "UCLA",
+    "yearsExperience": "6"
+  },
+  {
+    "name": "Alan Kay",
+    "email": "akay@techfriends.dev",
+    "password": "password06",
+    "skills": [
+      "Graphical User Interface (GUI) Design",
+      "Jazz Guitar",
+      "Education"
+    ],
+    "membershipType": "Mentee",
+    "education": "Self Taught",
+    "yearsExperience": "0"
+  },
+  {
+    "name": "David Thomas",
+    "email": "dthomas@techfriends.dev",
+    "password": "password08",
+    "skills": ["Author", "Code Kata", "Ruby", "Pragmatic Programming"],
+    "membershipType": "Mentor",
+    "education": "MIT",
+    "yearsExperience": "9"
+  },
+  {
+    "name": "Donald Knuth",
+    "email": "dknuth@techfriends.dev",
+    "password": "password09",
+    "skills": ["TeX Computer Typesetting", "Algorithms", "Author"],
+    "membershipType": "Mentor",
+    "education": "Standford",
+    "yearsExperience": "10"
+  }
+]
