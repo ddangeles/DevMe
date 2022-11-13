@@ -35,6 +35,7 @@ export const QUERY_ME = gql`
       email
       education
       yearsExperience
+      collabLinks
       connections {
         _id
         email

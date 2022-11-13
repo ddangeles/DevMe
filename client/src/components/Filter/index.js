@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import "./style.css";
+
 
 
 const filterOptions = createFilterOptions({
@@ -21,35 +23,15 @@ const theme2 = createTheme({
       main: "#1a1a1a",
     },
     background: {
-      default: ' #1a1a1a', 
-      paper: ' #1a1a1a',
+      default: 'white', 
+      paper: 'white',
     },
     text: {
-      primary: '#FFFFFF',
+      primary: 'black',
     }
   },
 });
 
-// const theme2 = createTheme({
-//   palette: {
-//     accent1Color: {
-//         main: "#e6e9ec",
-//     },
-//     primary: {
-//       main: "#e6e9ec",
-//     },
-//     secondary: {
-//       main: "#e6e9ec",
-//     },
-//     background: {
-//       default: ' #e6e9ec', 
-//       paper: ' #e6e9ec',
-//     },
-//     text: {
-//       primary: '#052541',
-//     }
-//   },
-// });
 
 const options = [ "Mentor", "Mentee" ]
 
@@ -59,7 +41,7 @@ export default function Filter({ setFilter }) {
 
   return (
     <ThemeProvider theme={theme2}>
-    <div>
+    <div className='bg-text-field'>
       <br />
       <Autocomplete
         value={value}
@@ -70,7 +52,7 @@ export default function Filter({ setFilter }) {
         id="controllable-states-demo"
         options={options}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Membership Type" />}
+        renderInput={(params) => <TextField {...params} label="Membership Type"/>}
       />
     </div>
     </ThemeProvider>

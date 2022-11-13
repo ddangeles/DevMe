@@ -18,6 +18,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 import Avatar from '../Avatar';
 import { Navigate, useParams } from 'react-router-dom';
@@ -107,9 +108,11 @@ function Dashboard() {
                                     <Typography variant="h5" component="div" color="primary.main">
                                         Collab Summary
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        MENTOR
-                                    </Typography>
+                                    {profile.collabLinks.map((collabLink) => (
+                                        <Typography variant="body2" color="text.secondary" className='m-2'>
+                                            <span><Badge className='badge'><a className="collab-link" href={`${collabLink}`} target="_blank">{`${collabLink}`}<TelegramIcon className='ml-1'/></a></Badge></span>
+                                        </Typography>
+                                    ))}
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -135,8 +138,9 @@ function Dashboard() {
                                                         name={connection.name}
                                                     />
                                                 </ListItemAvatar>
+                                                <Link to={`/profiles/${connection._id}`}>
                                                 <ListItemText id={labelId} primary={` ${connection.name}`} />
-                                                
+                                                </Link>
                                             </ListItemButton>
                                         </ListItem>
                                     );

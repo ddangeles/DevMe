@@ -48,7 +48,7 @@ const Profile = () => {
   const handleEdit = event => {
     event.preventDefault()
     setIsShown(current => !current);
-    
+
   }
 
   // const [isShown2, setIsShown2] = useState(false)
@@ -73,7 +73,7 @@ const Profile = () => {
 
   /////////////// editing data /////////////////
 
-  
+
 
   // const handleFormSubmit = async (event) => {
   //   event.preventDefault();
@@ -93,7 +93,6 @@ const Profile = () => {
 
   return (
     <div>
-
       {!isShown ? 
       <Card sx={{ bgcolor: 'text.primary', width: '600px', height: '400px', borderRadius: '20px'}}>
         <CardContent color="primary.main">
@@ -105,8 +104,8 @@ const Profile = () => {
           title={<Typography sx={{color: '#052541', fontSize:'25px', fontWeight:'bold', mb:-'1', mt:-'1' }}>{profile.name}</Typography>}
           subheader= {<Typography sx={{borderBottom: '1px solid black', color: '#393D39', fontSize:'15px', }}>{profile.membershipType}</Typography>}
             />
-          {/* </Typography> */}
-          {/*           
+            {/* </Typography> */}
+            {/*           
           <Typography variant="body2" color="text.secondary">
               {`${profile.membershipType}`}
             </Typography> */}
@@ -169,20 +168,23 @@ const Profile = () => {
 
         // </Card>
         <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
-        {/* update profile form vvvv */}
-        <UpdateProfile profileId={profile._id} setIsShown={setIsShown}/>
-      </div>
-      } 
+          <SkillForm profileId={profile._id} />
+         
 
-      
+          {profile.skills?.length > 0 && (
+            <SkillsList
+              skills={profile.skills}
+              isLoggedInUser={!profileId && true}
+            />
+          )}
 
-      {/* {profile.skills?.length > 0 && (
-        <SkillsList
-          skills={profile.skills}
-          isLoggedInUser={!profileId && true}
-        />
-      )} */}
+          <UpdateProfile profileId={profile._id} setIsShown={setIsShown} />
+        </div>
+      }
+
+
+
+
 
     </div>
   );

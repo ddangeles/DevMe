@@ -178,7 +178,7 @@ function ResponsiveDrawer(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex'}} className="box-drawer">
         <CssBaseline />
         <AppBar
           position="fixed"
