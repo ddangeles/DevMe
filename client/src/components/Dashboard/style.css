@@ -1,14 +1,61 @@
 .badge {
     color: white;
-    background-color:#052541;
+    background-color: #052541;
     font-size: 12px;
     padding: 5px;
     margin-left: -10px;
     border-radius: 50px;
 }
 
+
 .collab-link {
     text-decoration: none;
     color: white;
     padding-bottom: 4px;
+    
+.cardOne {
+    border-radius: 15px !important;
+    display: flex !important;
+    justify-content: center;
+}
+
+.cardTwo {
+    border-radius: 15px !important;
+}
+
+.cardThree {
+    border-radius: 15px !important;
+}
+
+.cardBoxOne {
+    width: 20rem !important;
+    margin-bottom: 1.8rem !important;
+    margin-top: .5rem !important;
+    border-radius: 15px !important;
+    background-color: #052541 !important;
+}
+
+.connectBtn:hover {
+    background-color: #314353 !important;
+}
+
+
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.hello-welcome {
+    display: flex;
+    justify-content: center;
+    animation: fadeInAnimation ease 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
