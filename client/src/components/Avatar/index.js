@@ -1,16 +1,10 @@
 import React from "react";
 import {getRandomColor,createImageFromInitials} from '../../utils/avatarHelper';
 import "./style.css";
-
-// const name = "Drew";
 const imgSrc = "";
 
 function Avatar({name}) {
-    
-
 	return (
-
-        
 		<span>
 			<img
 				id='preview'

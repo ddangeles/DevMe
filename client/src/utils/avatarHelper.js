@@ -29,14 +29,6 @@ export const createImageFromInitials = (size, name, color) => {
     const canvas=document.createElement('canvas')
     const context=canvas.getContext('2d')
     canvas.width=canvas.height=size
-    // const centerX = canvas.width / 2;
-    // const centerY = canvas.height / 2;
-    // const radius = 70;
-    
-    // context.beginPath();
-    // context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-    // context.fillStyle = 'green';
-    // context.fill();
 
     context.fillStyle="#ffffff"
     context.fillRect(0,0,size,size)

@@ -54,9 +54,10 @@ export const ADD_CONNECTION = gql`
 `;
 
 export const EDIT_PROFILE = gql`
-  mutation editProfile($profileId: ID!, $name: String, $yearsExperience: Int, $education: String) {
-  editProfile(profileId: $profileId, name: $name, yearsExperience: $yearsExperience, education: $education) {
+  mutation editProfile($profileId: ID!, $name: String, $yearsExperience: Int, $education: String, $github: String) {
+  editProfile(profileId: $profileId, name: $name, yearsExperience: $yearsExperience, education: $education, github: $github) {
     _id
+    github
     education
     name
     yearsExperience

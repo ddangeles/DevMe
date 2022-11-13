@@ -1,22 +1,15 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
-import SkillsList from '../components/SkillsList'
-import SkillForm from '../components/SkillForm'
 
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
-import Auth from '../utils/auth';
-
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import CardHeader from '@mui/material/CardHeader';
 
 
@@ -69,17 +62,6 @@ const SingleProfile = () => {
       </Typography>
       <br/>
 
-      {/* <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
-      </div>
-
-      {profile.skills?.length > 0 && (
-        <SkillsList
-          skills={profile.skills}
-          isLoggedInUser={!profileId && true}
-        />
-      )} */}
-
       <Card sx={{ bgcolor: '#e6e9ec', width: '400px' }}>
         <CardContent color="#052541">
           <CardHeader
@@ -90,7 +72,10 @@ const SingleProfile = () => {
             subheader={<Typography sx={{ color: '#393D39', fontSize: '15px', }}>{profile.membershipType}</Typography>}
           />
           <Typography sx={{ mb: 1.5, fontSize: 15, ml: 3, }} color="text.secondary">
-            Email: {`${profile.email}`}
+            Email: <a href={`mailto:${profile.email}`}>{`${profile.email}`}</a>
+          </Typography>
+          <Typography sx={{ mb: 1.5, fontSize: 15, ml:3, }} color="text.secondary">
+            Github: <a href={profile.github === null ? '#' : `https://github.com/${profile.github}`} target="_blank" rel="noopener noreferrer">{profile.github === null ? '' : `${profile.github}`}</a>
           </Typography>
           <Typography sx={{ mb: 1.5, fontSize: 15, ml: 3, }} variant="body2" color="text.secondary">
             Education: {`${profile.education}`}

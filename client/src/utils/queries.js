@@ -7,6 +7,9 @@ export const QUERY_PROFILES = gql`
       name
       skills
       membershipType
+      github
+      education
+      yearsExperience
     }
   }
 `;
@@ -21,6 +24,7 @@ export const QUERY_SINGLE_PROFILE = gql`
       email
       education
       yearsExperience
+      github
     }
   }
 `;
@@ -31,6 +35,7 @@ export const QUERY_ME = gql`
       _id
       name
       skills
+      github
       membershipType
       email
       education
@@ -40,6 +45,7 @@ export const QUERY_ME = gql`
         _id
         email
         name
+        github
       }
     }
   }

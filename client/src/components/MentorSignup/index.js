@@ -6,11 +6,6 @@ import { ADD_PROFILE } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-// import Box from '@mui/material/Box';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
-
 const MentorSignup = () => {
   const [formState, setFormState] = useState({
     name: '',
