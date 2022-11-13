@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css"
+import { Link } from 'react-router-dom'
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -17,6 +18,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 import Avatar from '../Avatar';
 import { Navigate, useParams } from 'react-router-dom';
@@ -82,7 +84,7 @@ function Dashboard() {
                                         ))}
                                     </Stack>
                                     <Typography variant="h5" component="div" color="primary.main" py={2}>
-                                    <Avatar name={profile.name}/> {`${profile.name}`}
+                                        <Avatar name={profile.name} /> {`${profile.name}`}
                                     </Typography>
                                     <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
                                         Education: {`${profile.education}`}
@@ -106,9 +108,11 @@ function Dashboard() {
                                     <Typography variant="h5" component="div" color="primary.main">
                                         Collab Summary
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        MENTOR
-                                    </Typography>
+                                    {profile.collabLinks.map((collabLink) => (
+                                        <Typography variant="body2" color="text.secondary" className='m-2'>
+                                            <span><Badge className='badge'><a className="collab-link" href={`${collabLink}`} target="_blank">{`${collabLink}`}<TelegramIcon className='ml-1'/></a></Badge></span>
+                                        </Typography>
+                                    ))}
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -134,7 +138,9 @@ function Dashboard() {
                                                         name={connection.name}
                                                     />
                                                 </ListItemAvatar>
+                                                <Link to={`/profiles/${connection._id}`}>
                                                 <ListItemText id={labelId} primary={` ${connection.name}`} />
+                                                </Link>
                                             </ListItemButton>
                                         </ListItem>
                                     );

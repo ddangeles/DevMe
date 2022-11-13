@@ -63,7 +63,7 @@ const MenteeSignup = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your name"
+                  placeholder="Full Name"
                   name="name"
                   type="text"
                   value={formState.name}
@@ -71,7 +71,7 @@ const MenteeSignup = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your email"
+                  placeholder="your@email.com"
                   name="email"
                   type="email"
                   value={formState.email}

@@ -63,3 +63,23 @@ export const EDIT_PROFILE = gql`
   }
 }
 `;
+
+export const ADD_COLLAB = gql`
+mutation addCollabLink($profileId: ID!, $collabLink: String!) {
+  addCollabLink(profileId: $profileId, collabLink: $collabLink) {
+    _id
+    name
+    collabLinks
+  }
+}
+`;
+
+export const REMOVE_COLLAB = gql`
+mutation removeCollabLink($collabLink: String!) {
+  removeCollabLink(collabLink: $collabLink) {
+    _id
+    name
+    collabLinks
+  }
+}
+`;

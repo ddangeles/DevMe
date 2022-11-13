@@ -11,3 +11,6 @@
     color: var(--mint);
 }
 
+.box-drawer {
+  margin-top: -3em;
+}
