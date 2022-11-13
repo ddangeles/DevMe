@@ -118,8 +118,8 @@ function ResponsiveDrawer(props) {
               <ListItemIcon style={{ color: '#e6e9ec' }}>
                 {section.icon}
               </ListItemIcon>
-              <span onClick={() => setCurrentSection(section)}> {section.name}
-                <ListItemText className={currentSection.name === section.name && "active"} key={section.name}>
+              <span className={currentSection.name === section.name && "active"} onClick={() => setCurrentSection(section)}> {section.name}
+                <ListItemText key={section.name}>
                 </ListItemText>
               </span>
             </ListItemButton>
