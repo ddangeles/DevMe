@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './style.css';
 
 
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import { useMutation } from '@apollo/client';
 import { ADD_CONNECTION } from '../../utils/mutations';
+import Alerts from '../Alerts'
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -15,6 +17,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardHeader } from '@mui/material';
 import { borderColor } from '@mui/system';
+import BasicAlerts from '../Alerts';
 
 
 const ProfileList = ({ profiles, title }) => {
@@ -24,8 +27,6 @@ const ProfileList = ({ profiles, title }) => {
     event.preventDefault();
     console.log(profileId)
     // remove later
-    alert('Success!')
-
     try {
       const data = await addConnection({
         variables: { profileId },
@@ -42,7 +43,6 @@ const ProfileList = ({ profiles, title }) => {
 
   return (
     <div>
-      
       <div className="flex-row justify-space-between my-4">
         {profiles &&
           profiles.map((profile) => (
@@ -66,7 +66,8 @@ const ProfileList = ({ profiles, title }) => {
                 </div>
 
                 <div className="justify-center">
-                  <button 
+                  <button
+                  className='profile-btn'
                   onClick={ (event)=> handleConnection(event, profile._id) }
                   style={{background:'#e6e9ec', color:'#052541', border:'none'}}
                   >
