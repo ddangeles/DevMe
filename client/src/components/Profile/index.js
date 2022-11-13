@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './style.css'
 
 import { useMutation } from '@apollo/client';
 
@@ -94,7 +95,7 @@ const Profile = () => {
     <div>
 
       {!isShown ? 
-      <Card sx={{ bgcolor: 'text.primary', width: '400px'}}>
+      <Card sx={{ bgcolor: 'text.primary', width: '600px', height: '400px', borderRadius: '20px'}}>
         <CardContent color="primary.main">
           <CardHeader 
           avatar={
@@ -102,29 +103,30 @@ const Profile = () => {
             <Avatar name={profile.name} />
           }
           title={<Typography sx={{color: '#052541', fontSize:'25px', fontWeight:'bold', mb:-'1', mt:-'1' }}>{profile.name}</Typography>}
-          subheader= {<Typography sx={{color: '#393D39', fontSize:'15px', }}>{profile.membershipType}</Typography>}
+          subheader= {<Typography sx={{borderBottom: '1px solid black', color: '#393D39', fontSize:'15px', }}>{profile.membershipType}</Typography>}
             />
           {/* </Typography> */}
           {/*           
           <Typography variant="body2" color="text.secondary">
               {`${profile.membershipType}`}
             </Typography> */}
-          <Typography sx={{ mb: 1.5, fontSize: 15, ml:3, }} color="text.secondary">
+          <Typography sx={{ mb: 1.5, fontSize: 24, ml:3, }} color="text.secondary">
             Email: {`${profile.email}`}
           </Typography>
-          <Typography sx={{ mb: 1.5, fontSize: 15, ml:3, }} variant="body2" color="text.secondary">
+          <Typography sx={{ mb: 1.5, fontSize: 24, ml:3, }} variant="body2" color="text.secondary">
             Education: {`${profile.education}`}
           </Typography>
-          <Typography sx={{ mb: 1.5, fontSize: 15, ml:3, }} variant="body2" color="text.secondary">
+          <Typography sx={{ mb: 1.5, fontSize: 24, ml:3, }} variant="body2" color="text.secondary">
             Year's Experience: {`${profile.yearsExperience}`}
           </Typography>
-          <Typography sx={{ mb: 1.5, fontSize: 15, ml:3, }} color="text.secondary" gutterBottom>
+          <Typography sx={{ mb: 1.5, fontSize: 24, ml:3, }} color="text.secondary" gutterBottom>
             Skills: {`${profile.skills} `}
           </Typography>
         </CardContent>
-        <CardActions sx={{ml:3}}>
-          <Button 
-          // sx={{background: '#052541', color: 'white'}}
+        <CardActions sx={{display:'flex', justifyContent:'center'}}>
+          <Button
+          className='submitBtn' 
+          sx={{alignItems: 'center', background: '#052541', color: 'white', width:'100px', borderRadius:'10px'}}
           size="small" 
           onClick={handleEdit}>EDIT</Button>
         </CardActions>

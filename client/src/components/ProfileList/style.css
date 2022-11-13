@@ -1,0 +1,12 @@
+.profile-btn {
+    border: .5px solid grey !important;
+}
+.profile-btn:hover {
+    cursor: pointer !important;
+}
+
+.profile-btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    /* Lowering the shadow */
+}
