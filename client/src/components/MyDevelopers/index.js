@@ -4,9 +4,6 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { useMutation } from '@apollo/client';
-import { ADD_CONNECTION } from '../../utils/mutations';
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -70,9 +67,22 @@ function MyDevelopers() {
                                         variant="body2"
                                         color="#696969"
                                     >
-                                        {connection.email}
+                                        <a href={`mailto:${connection.email}`}>{connection.email}</a>
                                     </Typography>
                                     <br/>
+                                    {connection.github === null ? '' : 
+                                    <>
+                                    <Typography
+                                        sx={{ display: 'inline' }}
+                                        component="span"
+                                        variant="body2"
+                                        color="#696969"
+                                    >
+                                        Github: <a href={`https://github.com/${connection.github}`} target="_blank" rel="noopener noreferrer">{`${connection.github}`}</a>
+                                    </Typography>
+                                    <br/>
+                                    </>
+                                    }
                                     <Link
                                         className="devButton"
                                         to={`/profiles/${connection._id}`}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { QUERY_PROFILES,  QUERY_MENTORS,  QUERY_MENTEES } from '../../utils/queries';
 import ProfileList from '../ProfileList';
 import { useQuery } from '@apollo/client';
@@ -21,12 +21,10 @@ function FindStudent() {
   console.log(profileMentees)
 
   const [filter, setFilter] = React.useState("Mentor");
-  // console.log(Users.filter(users=>users.first_name.toLowerCase().includes('run')));
   return (
 
    
     <div className="col-12 col-md-10 my-3 align-center justify-center"> 
-    {/* {filter} */}
       <Filter setFilter={setFilter}/>
       
       {loading ? (
@@ -37,7 +35,6 @@ function FindStudent() {
         />
       )}
     </div>
-    // </div>
 
   )
 }

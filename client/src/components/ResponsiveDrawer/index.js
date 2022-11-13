@@ -1,9 +1,7 @@
 // from material ui
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
-
 
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -11,18 +9,13 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 
-// import ProfileList from '../components/ProfileList';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -154,23 +147,6 @@ function ResponsiveDrawer(props) {
             </>
           )}
         </div>
-
-      {/* <Divider />
-      <List>
-      {sections2.map((section) =>  (
-          <ListItem key={section} disablePadding>
-            <ListItemButton>
-              <ListItemIcon style={{ color: '#e6e9ec'}}>
-              {section.icon}
-              </ListItemIcon>
-              <ListItemText className={currentSection.name === section.name && "active"} key={section.name}><span onClick={() => setCurrentSection(section) }> {section.name} </span>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-                    
-                )
-                )} */}
-      {/* </List> */}
     </div>
   );
 
@@ -187,18 +163,6 @@ function ResponsiveDrawer(props) {
             ml: { sm: `${drawerWidth}px` },
           }}
         >
-          {/* <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          
-        </Toolbar> */}
         </AppBar>
         <Box
           component="nav"

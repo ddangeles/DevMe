@@ -41,6 +41,10 @@ const profileSchema = new Schema({
     type: String,
     required: false,
   },
+  github: {
+    type: String,
+    required: false,
+  },
   collabLinks: [
     {
       type: String,

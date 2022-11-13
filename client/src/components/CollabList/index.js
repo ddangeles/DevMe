@@ -41,7 +41,7 @@ const CollabLinksList = ({ collabLinks, isLoggedInUser = false }) => {
             <div key={collabLink} className="col-12">
               <div className="card mb-3">
                 <p className="bg-dark text-light p-2 m-0 display-flex align-center">
-                  <a href={collabLink} target="_blank">{collabLink}</a>
+                  <a href={collabLink} target="_blank" rel="noopener noreferrer">{collabLink}</a>
                   {isLoggedInUser && (
                     <button
                       className="btn btn-sm btn-danger ml-auto"

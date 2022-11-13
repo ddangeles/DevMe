@@ -9,15 +9,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_CONNECTION } from '../../utils/mutations';
 import Alerts from '../Alerts'
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { CardHeader } from '@mui/material';
-import { borderColor } from '@mui/system';
-import BasicAlerts from '../Alerts';
 
 
 const ProfileList = ({ profiles, title }) => {
@@ -82,43 +73,6 @@ const ProfileList = ({ profiles, title }) => {
           ))}
       </div>
 
-      {/* <div className="flex-row justify-space-between my-4">
-
-        {profiles &&
-          profiles.map((profile) => (
-            <div key={profile._id} className="col-12 col-xl-6">
-              <Card sx={{ minWidth: 275, background: '#e6e9ec' }} >
-
-                <CardContent>
-                  <CardHeader
-                    title={
-                      <Typography sx={{ fontSize: '25px', color: "#052541", fontWeight: 'bold' }} gutterBottom>
-                        {profile.name}
-                      </Typography>}
-                    subheader={
-                      <Typography variant="h5" component="div" sx={{ color: "#052541", fontSize: '14px' }}>
-                        {profile.membershipType}
-                      </Typography>}
-                  ></CardHeader>
-                  <Typography><Link
-
-                    className="devButton"
-                    to={`/profiles/${profile._id}`}>
-                    View Profile
-                  </Link></Typography>
-                </CardContent>
-                <CardActions
-                  sx={{ ml: '10px' }}>
-
-
-                  <Link onClick={(event) => handleConnection(event, profile._id)}><PersonAddIcon /></Link>
-                </CardActions>
-
-              </Card>
-              <br />
-            </div>
-          ))}
-      </div> */}
 
     </div>
   );

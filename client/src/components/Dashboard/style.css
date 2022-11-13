@@ -3,7 +3,7 @@
     background-color: #052541;
     font-size: 12px;
     padding: 5px;
-    margin-left: -10px;
+    margin-left: 10px;
     border-radius: 50px;
 }
 
@@ -33,7 +33,7 @@
     margin-bottom: 1.8rem !important;
     margin-top: .5rem !important;
     border-radius: 15px !important;
-    background-color: #052541 !important;
+    background-color: white !important;
 }
 
 .connectBtn:hover {
