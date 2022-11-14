@@ -16,6 +16,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './pages/Main';
 import SingleProfile from './pages/SingleProfile'
+import chatApp from './components/chat/chatApp';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -67,6 +68,10 @@ function App() {
                 path="/profiles/:profileId"
                 element={<SingleProfile />}
               />
+              <Route 
+                path="/chat"
+                element={<chatApp />}
+              />
             </Routes>
           </div>
           <Footer />
@@ -75,5 +80,3 @@ function App() {
     </ApolloProvider>
   );
 }
-
-export default App;
