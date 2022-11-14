@@ -18,7 +18,7 @@
 This project was to build a social media app that would connect new developers looking for guidance with experienced developers to mentor them. This app will help people find mentors/mentees to help them with career advice and collaborate on projects.
 
 ## Installation Instructions: <a name="installation"></a>
-Clone the git repository to your desktop. To install the necessary dependencies, run the following command in terminal once the respository has been cloned: `npm install`. Once the dependencies are installed, you can launch the development server by running `npm dev`.
+Clone the git repository to your desktop. To install the necessary dependencies, run the following command in terminal once the respository has been cloned: `npm install`. Once the dependencies are installed, you can launch the development server by running `npm run devlop`.
 
 ## Usage Information: <a name="usage"></a>
 To use this app, create a log in as either a mentor or mentee. Once you are logged in, you can update your profile with your years experience, school, GitHub and skills. You can also search for mentors and mentees and add them as connections. You can upload links to collaborations you are working on with your mentor/mentee.
